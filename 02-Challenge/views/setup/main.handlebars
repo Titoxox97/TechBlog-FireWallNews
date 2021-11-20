@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/02-Challenge/public/css/style.css">
+    <title>FireWall Blog</title>
+</head>
+<body>
+    <nav class= "navLink">
+        <a class="link" href="/"> Main Page </a>
+        <a class="link" href="/">Tech News </a>
+        {{#if loggedIn }}
+        <a class="link" href="/" id ="logout">See ya!</a>
+        {{else}}
+        <a class="link" href="/login">Sign in</a>
+        {{/if}}
+    </nav>
+    
+    <div class="container">
+        {{{body}}}
+    </div>
+</body>
+</html>
