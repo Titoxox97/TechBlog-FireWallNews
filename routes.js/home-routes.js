@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
   Post.findAll({
     include: [{ model: User }],
   })
-    .then((dbPostDataa) => {
+    .then((dbPostData) => {
       res.render("homepage", { dbPostData });
     })
     .catch((err) => {

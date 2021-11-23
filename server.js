@@ -2,8 +2,8 @@ const path = require("path");
 const express = require("express");
 const express_hbs = require("express-handlebars");
 const session = require(`express-session`);
-const { Sequelize } = require("sequelize/types");
-const sequelize = require("./02-Challenge/config/connection");
+const { Sequelize } = require("sequelize");
+const sequelize = require("./config/connection");
 
 var SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -19,11 +19,21 @@ app.use(
   })
 );
 
+const { engine } = require("express-handlebars");
+
+app.engine(
+  "handlebars",
+  engine({ extname: ".handlebars", defaultLayout: "main" })
+);
+app.set("view engine", "handlebars");
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(require("02-Challenge/routes.js"));
+app.use(require("./routes.js"));
 
-app.listen(PORT, () => {
-  console.log("App listening on PORT " + PORT);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log("App listening on PORT " + PORT);
+  });
 });
