@@ -4,9 +4,11 @@ const { Comment, Post, User } = require("../models");
 router.get("/", (req, res) => {
   Post.findAll({
     include: [{ model: User }],
+    raw: true,
   })
     .then((dbPostData) => {
-      res.render("homepage", { dbPostData });
+      console.log(dbPostData);
+      res.render("homepage", { posts: dbPostData });
     })
     .catch((err) => {
       console.log(err);

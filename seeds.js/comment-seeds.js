@@ -4,35 +4,35 @@ const commentData = [
   {
     user_id: 2,
     post_id: 1,
-    comment_text: "Good",
+    body: "Good",
   },
   {
     user_id: 2,
     post_id: 1,
-    comment_text: "Bad",
+    body: "Bad",
   },
   {
     user_id: 3,
     post_id: 2,
-    comment_text: "Medium",
+    body: "Medium",
   },
   {
     user_id: 3,
     post_id: 2,
-    comment_text: "Amazing",
+    body: "Amazing",
   },
   {
     user_id: 1,
     post_id: 3,
-    comment_text: "Great",
+    body: "Great",
   },
   {
     user_id: 1,
     post_id: 3,
-    comment_text: "Terrible",
+    body: "Terrible",
   },
 ];
 
-const seedComments = () => Comment.create(commentData);
+const seedComments = () => Comment.bulkCreate(commentData);
 
 module.exports = seedComments;
