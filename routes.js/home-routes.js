@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { response } = require("express");
 const { Comment, Post, User } = require("../models");
 
 router.get("/", (req, res) => {
@@ -13,5 +14,9 @@ router.get("/", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+
+router.get("/create-post", (req, res) => {
+  res.render("create-post");
 });
 module.exports = router;
