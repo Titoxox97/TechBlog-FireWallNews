@@ -1,9 +1,10 @@
 const router = require("express").Router();
+const excAuth = require("../../utils/auth");
 
 const { User, Post, Comment } = require("../../models");
 
 // *create a user route
-router.user("/", excAuth, (req, res) => {
+router.post("/", excAuth, (req, res) => {
   User.create({ ...req.body, userId: req.session.user_id })
     .then((res) => res.json(res))
     .catch((err) => res.status(500).json(err));
@@ -62,3 +63,5 @@ router.post("/login", (req, res) => {
   });
 });
 // *logout route
+
+module.exports = router;
