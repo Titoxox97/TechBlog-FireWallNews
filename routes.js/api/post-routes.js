@@ -6,9 +6,13 @@ const { Post, User, Comment } = require("../../models");
 
 // Create a Post route
 router.post("/", excAuth, (req, res) => {
+  console.log(req.body);
   Post.create({ ...req.body, userId: req.session.user_id })
-    .then((res) => res.json(res))
-    .catch((err) => res.status(500).json(err));
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // Update Post route by id

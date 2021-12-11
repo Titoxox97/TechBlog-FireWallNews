@@ -10,7 +10,7 @@ async function loginFormHandler(event) {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(() => document.location.replace("/dashboard"));
+  }).then(() => document.location.replace("/"));
 }
 
 document

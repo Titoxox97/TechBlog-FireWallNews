@@ -17,11 +17,12 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/create-post", (req, res) => {
-  Post.findOne({
-    include: [{ model: User }],
-    raw: true,
+router.get("/create-post", async (req, res) => {
+  let data = await User.findOne({
+    include: [Post],
   });
+  console.log(data);
+
   res.render("create-post");
 });
 

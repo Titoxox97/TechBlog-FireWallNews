@@ -2,16 +2,22 @@ let form = document.querySelector(".new-post");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   let title = document.querySelector("#post-title").value;
-  let content = document.querySelector("#post-content").value;
+  let body = document.querySelector("#post-content").value;
 
   fetch("/api/posts", {
     method: "post",
-    data: JSON.stringify({
+    body: JSON.stringify({
       title,
-      content,
+      body,
     }),
     headers: {
-      "content-type": "application/JSON",
+      "Content-Type": "application/json",
     },
-  });
+  })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
